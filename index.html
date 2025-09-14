@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifeguard AI - פתרון AI לבטיחות ברשתות מלונות יוקרה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0052FF;
+            --primary-blue-dark: #0045D1;
+            --text-dark: #212529;
+            --text-muted: #6C757D;
+            --bg-light: #FFFFFF;
+            --highlight-bg: #F8F9FA;
+            --border-light: #DEE2E6;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.7;
+        }
+        
+        .container { max-width: 1140px; margin: 0 auto; padding: 5rem 2rem; }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center;
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto 2.5rem; }
+        .cta-button {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover { background-color: var(--primary-blue-dark); transform: translateY(-3px); }
+
+        /* Sections */
+        .section-title { text-align: center; font-size: 2.8rem; font-weight: 800; margin-bottom: 3.5rem; }
+        
+        /* Features Grid */
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        .feature-card { display: flex; align-items: flex-start; }
+        .feature-card .icon { font-size: 2.5rem; color: var(--primary-blue); margin-left: 1.5rem; }
+        .feature-card h3 { font-size: 1.25rem; font-weight: 700; margin-top: 0; margin-bottom: 0.5rem; }
+        .feature-card p { font-size: 1rem; color: var(--text-muted); margin: 0; }
+
+        /* Partnership Section */
+        .partnership-section { background-color: var(--highlight-bg); }
+        .partnership-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
+        .partnership-image video { 
+            width: 100%; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+        }
+        .partnership-content h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; }
+        .partnership-content ul { list-style: none; padding: 0; margin-top: 1.5rem; }
+        .partnership-content li { display: flex; align-items: flex-start; margin-bottom: 1rem; }
+        .partnership-content .tick-icon { color: var(--primary-blue); margin-left: 1rem; font-size: 1.2rem; }
+        
+        /* Testimonials Section */
+        .testimonials-section { background-color: var(--bg-light); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .testimonial-card { 
+            background-color: var(--highlight-bg); 
+            padding: 2rem; 
+            border-radius: 12px; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .testimonial-card p { font-size: 1rem; font-style: italic; margin: 0 0 1rem; }
+        .testimonial-author { 
+            font-weight: 600; 
+            color: var(--text-muted); 
+            margin-top: 1rem;
+            background-color: transparent;
+        }
+
+        /* CTA Section */
+        .cta-section { text-align: center; background-color: var(--text-dark); color: white; padding: 5rem 2rem; }
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.2rem; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; }
+
+        /* Footer */
+        footer { text-align: center; padding: 2rem; background-color: #f8f9fa; }
+
+        @media (max-width: 992px) {
+            .partnership-layout { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>הדור הבא של חווית אורח מתחיל בבטיחות</h1>
+                <p>הציגו סטנדרט חדש של יוקרה וחדשנות בכל מלונות הרשת עם Lifeguard AI – פלטפורמת AI להגנה על אורחים בבריכות פרטיות.</p>
+                <a href="#partnership" class="cta-button">למידע על תוכנית השותפים לרשתות</a>
+            </div>
+        </section>
+
+        <section class="features-section container">
+            <h2 class="section-title">טכנולוגיה מוכחת. שקט נפשי מוחלט.</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🌊</div>
+                    <div>
+                        <h3>זיהוי תנועות טביעה חשודות</h3>
+                        <p>טכנולוגיית AI מתקדמת מזהה באופן ספציפי סימני מצוקה ותנועות המעידות על קושי בשחייה או טביעה.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏱️</div>
+                     <div>
+                        <h3>התראה על שהייה ממושכת מתחת למים</h3>
+                        <p>קבלו התראה אוטומטית כאשר המערכת מזהה אדם השוהה מתחת לפני המים זמן רב מדי.</p>
+                    </div>
+                </div>
+                 <div class="feature-card">
+                    <div class="icon">🚫</div>
+                     <div>
+                        <h3>זיהוי כניסה לא מורשית לבריכה</h3>
+                        <p>מנעו כניסה לא מורשית של ילדים, מבוגרים או חיות מחמד לבריכה, במיוחד בשעות הלילה.</p>
+                    </div>
+                </div>
+                 <div class="feature-card">
+                    <div class="icon">🌦️</div>
+                     <div>
+                        <h3>עמידות מלאה למזג אוויר</h3>
+                        <p>המצלמה בעלת תקן עמידות IP65, ומתוכננת לעמוד בגשם כבד, רוחות ותנאי חוץ קשים.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="partnership" class="partnership-section">
+            <div class="container partnership-layout">
+                <div class="partnership-image">
+                     <video autoplay loop muted playsinline>
+                        <source src="https://lifeguard-ai.com/wp-content/uploads/2024/05/65d017bb2899dc24f2a6f39d_FinNewLogo-transcode.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="partnership-content">
+                    <h2>תוכנית שותפים אסטרטגית לרשתות מלונות</h2>
+                    <p>אנו מבינים את הצרכים הייחודיים של רשתות מלונות ומציעים תוכנית שותפים מקיפה להטמעה חלקה ומוצלחת בכל הנכסים.</p>
+                    <ul>
+                        <li><span class="tick-icon">✔️</span><div><strong>הנחה רשתית משמעותית:</strong> תמחור מיוחד לפריסה רחבה במספר מלונות, המבטיח החזר השקעה מהיר.</div></li>
+                        <li><span class="tick-icon">✔️</span><div><strong>מנהל לקוח אישי:</strong> ליווי צמוד של מנהל פרויקט ייעודי לכל אורך תהליך ההתקנה וההטמעה.</div></li>
+                        <li><span class="tick-icon">✔️</span><div><strong>התאמה אישית ומיתוג:</strong> אפשרויות להתאמה של ממשק ההתראות והמערכת לצרכים ולמיתוג של הרשת.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">מה לקוחות אומרים עלינו</h2>
+                 <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <img src="https://lifeguard-ai.com/wp-content/uploads/2024/05/65c4018d8427385902aa2e3c_Jennifer-Jacobs-p-500.jpg" alt="Jennifer Jacobs">
+                        <p>"Lifeguard AI שינה לנו את חווית הבריכה! כהורה עסוק, זו הקלה עצומה שיש מערכת שמורידה את הלחץ מההשגחה."</p>
+                        <p class="testimonial-author">— ג'ניפר ג'ייקובס, מיאמי, פלורידה</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://lifeguard-ai.com/wp-content/uploads/2024/05/65c401357826efc51a46d2a6_Michael-Sokol-p-500.jpg" alt="Michael Sokol">
+                        <p>"זה כמו זוג עיניים נוסף על הבריכה, וזו הקלה עצומה לכל הורה. זה נותן לי שקט נפשי לדעת שהילדים שלי בטוחים יותר."</p>
+                        <p class="testimonial-author">— מייקל סוקול, מיאמי, פלורידה</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://lifeguard-ai.com/wp-content/uploads/2024/05/3.jpg" alt="Sarah Leight">
+                        <p>"פשוט מציל חיים להורים עסוקים כמוני. כל כך מנחם לדעת שבהתקנה פשוטה, המשפחה שלי נהנית משכבת הגנה נוספת."</p>
+                        <p class="testimonial-author">— שרה לייט, מיאמי, פלורידה</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>מוכנים להוביל את עתיד האירוח?</h2>
+                <p>נקבע שיחת ייעוץ קצרה כדי לדון בצרכים הייחודיים של הרשת שלכם ולהציג בפניכם הצעה מותאמת אישית.</p>
+                <a href="mailto:sales@lifeguard-ai.com?subject=פנייה בנוגע לשיתוף פעולה לרשתות מלונות" class="cta-button">תיאום שיחת ייעוץ אסטרטגי</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Lifeguard AI. כל הזכויות שמורות.</p>
+    </footer>
+
+</body>
+</html>
+
