@@ -110,7 +110,33 @@
         .cta-section p { font-size: 1.2rem; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; }
 
         /* Footer */
-        footer { text-align: center; padding: 2rem; background-color: #f8f9fa; }
+        footer { 
+            text-align: center; 
+            padding: 3rem 2rem; 
+            background-color: var(--highlight-bg);
+            border-top: 1px solid var(--border-light);
+        }
+        .footer-contact-info {
+            margin-bottom: 1.5rem;
+        }
+        .footer-contact-info p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+         .footer-contact-info a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+         }
+         .footer-contact-info a:hover {
+            color: var(--primary-blue);
+         }
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
 
         @media (max-width: 992px) {
             .partnership-layout { grid-template-columns: 1fr; }
@@ -222,7 +248,12 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Lifeguard AI. כל הזכויות שמורות.</p>
+        <div class="footer-contact-info">
+            <p><strong>קלמן גרינפילד, CMO</strong></p>
+            <p>ליצירת קשר: <a href="mailto:sales@lifeguard-ai.com">sales@lifeguard-ai.com</a></p>
+            <p>טלפון: <a href="tel:+972585315415">+972-58-531-5415</a></p>
+        </div>
+        <p class="copyright">&copy; 2025 Lifeguard AI. כל הזכויות שמורות.</p>
     </footer>
 
 </body>
